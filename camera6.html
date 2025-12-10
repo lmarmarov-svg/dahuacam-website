@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Камера 6 – Разпознаване на лица</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+body{
+  font-family:'Inter';margin:0;padding:0;
+  background:url('camera6.jpg') center/cover fixed;
+}
+header{
+  position:sticky;top:0;background:rgba(0,0,0,.85);
+  backdrop-filter:blur(10px);padding:1rem;
+}
+.container{max-width:1150px;margin:auto;padding:1rem;}
+.panel{
+  background:rgba(0,0,0,.75);padding:2rem;border-radius:14px;
+  backdrop-filter:blur(10px);
+}
+h1{color:white;margin-bottom:1rem;}
+p,li{color:#e5e7eb;}
+.price{color:#facc15;font-weight:bold;margin:1rem 0;}
+input{width:100%;padding:.7rem;margin-bottom:1rem;border-radius:10px;border:1px solid #334155;background:#0f172a;color:white;}
+button{width:100%;padding:1rem;border:none;border-radius:999px;background:linear-gradient(135deg,#2563eb,#38bdf8);color:white;font-size:1rem;}
+a{color:#93c5fd;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <a href="index.html" style="color:white;font-weight:bold;">DahuaCam</a>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="panel">
+
+      <a href="cameras.html">⬅ Назад</a>
+
+      <h1>Камера 6 – AI Разпознаване на лица</h1>
+
+      <p>
+        Професионална IP камера с изкуствен интелект за детекция и разпознаване на лица.
+        Подходяща за входове, офиси, контрол на достъп и охрана.
+      </p>
+
+      <ul>
+        <li>AI разпознаване на лица</li>
+        <li>AI анализ на поведение</li>
+        <li>Работи с NVR AI серии</li>
+        <li>Отлично качество при ниска светлина</li>
+      </ul>
+
+      <p class="price">Цена: по запитване</p>
+
+      <label>Брой:</label>
+      <input type="number" id="qty" min="1" value="1">
+
+      <button id="addToCart">Добави в количката</button>
+
+    </div>
+  </div>
+</main>
+
+<script>
+const CART_KEY='dahuacamCart';
+function g(){return JSON.parse(localStorage.getItem(CART_KEY)||"[]");}
+function s(c){localStorage.setItem(CART_KEY,JSON.stringify(c));}
+addToCart.onclick=()=>{
+  const cart=g();
+  cart.push({id:"camera6",name:"Face Recognition AI",qty:parseInt(qty.value),price:null});
+  s(cart);
+  alert("Добавено!");
+};
+</script>
+
+</body>
+</html>
