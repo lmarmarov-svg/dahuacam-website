@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Камера 4 – 6MP за NVR4208-EI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--text:#e5e7eb;--muted:#9ca3af;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+      font-family:'Inter',sans-serif;
+      background:url('camera4.jpg') no-repeat center center fixed;
+      background-size:cover;
+    }
+    a{color:#cbd5f5;text-decoration:none;}
+    header{
+      position:sticky;top:0;z-index:100;
+      backdrop-filter:blur(14px);
+      background:rgba(2,6,23,.92);
+      border-bottom:1px solid rgba(148,163,184,.3);
+    }
+    .container{max-width:1150px;margin:auto;padding:0 1.5rem;}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 0;}
+    .logo{color:#e5e7eb;font-weight:700;font-size:1rem;}
+    nav ul{display:flex;list-style:none;gap:1.5rem;}
+    nav a{color:#9ca3af;}
+    main{padding:2.5rem 0;}
+    .panel{
+      background:rgba(15,23,42,.88);
+      padding:2rem;
+      border-radius:16px;
+      backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    h1{color:#e5e7eb;margin-bottom:1rem;}
+    .lead{color:#9ca3af;margin-bottom:1rem;}
+    ul{color:#9ca3af;margin-bottom:1rem;}
+    .price{color:#fbbf24;font-weight:600;margin-bottom:1rem;}
+    input{
+      width:100%;padding:.6rem;background:#0f172a;border-radius:10px;
+      border:1px solid #334155;color:#e5e7eb;margin-bottom:1rem;
+    }
+    button{
+      padding:.8rem 1.4rem;background:linear-gradient(135deg,#2563eb,#38bdf8);
+      border:none;border-radius:999px;color:white;font-weight:600;
+      cursor:pointer;width:100%;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="nav">
+      <a href="index.html" class="logo">DahuaCam Advanced Security</a>
+      <nav><ul>
+        <li><a href="cameras.html">Камери</a></li>
+        <li><a href="checkout.html">Количка (<span data-cart-count>0</span>)</a></li>
+      </ul></nav>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="panel">
+      <a href="cameras.html">⬅ Назад</a>
+
+      <h1>Камера 4 – 6MP за NVR4208-EI</h1>
+
+      <p class="lead">
+        6-мегапикселова камера, подходяща за работа само с NVR устройства. 
+        Препоръчително използване с модел NVR4208-EI.
+      </p>
+
+      <ul>
+        <li>6MP резолюция</li>
+        <li>Силна бяла светлина</li>
+        <li>Подходяща за външен монтаж</li>
+        <li>Работи само с NVR система</li>
+      </ul>
+
+      <p class="price">Цена: по запитване</p>
+
+      <label>Брой:</label>
+      <input type="number" id="qty" value="1" min="1">
+
+      <button id="addToCart">Добави в количката</button>
+    </div>
+  </div>
+</main>
+
+<script>
+const CART_KEY="dahuacamCart";
+function getCart(){return JSON.parse(localStorage.getItem(CART_KEY)||"[]");}
+function saveCart(c){localStorage.setItem(CART_KEY,JSON.stringify(c));}
+document.getElementById("addToCart").onclick=()=>{
+  const qty=parseInt(qty.value);
+  const cart=getCart();
+  cart.push({id:"camera4",name:"6MP Камера",qty,price:null});
+  saveCart(cart);
+  alert("Добавено в количката!");
+};
+</script>
+
+</body>
+</html>
