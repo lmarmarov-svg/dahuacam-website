@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Камера 1 – Dahua TiOC 3-in-1</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--text:#e5e7eb;--muted:#9ca3af;--border:#1f2937;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{
+      margin:0;
+      font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+      background:url('camera1.jpg') no-repeat center center fixed; /* 👈 фон = камерата */
+      background-size:cover;
+    }
+    a{color:inherit;text-decoration:none;}
+    header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(14px);
+      background:rgba(2,6,23,.9);
+      border-bottom:1px solid rgba(148,163,184,.3);
+    }
+    .container{max-width:1150px;margin:0 auto;padding:0 1.5rem;}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:.85rem 0;}
+    .logo{color:#e5e7eb;font-weight:700;font-size:.98rem;}
+    nav ul{list-style:none;display:flex;gap:1.5rem;font-size:.9rem;}
+    nav a{color:#9ca3af;position:relative;}
+    nav a::after{
+      content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;
+      background:linear-gradient(90deg,#2563eb,#38bdf8);transition:width .18s ease;
+    }
+    nav a:hover::after{width:100%;}
+    .cart-link{font-size:.9rem;color:#e5e7eb;}
+    .cart-badge{
+      display:inline-flex;align-items:center;justify-content:center;
+      min-width:18px;height:18px;border-radius:999px;background:#f97316;
+      font-size:.75rem;margin-left:.2rem;padding:0 4px;
+    }
+    main{padding:2.4rem 0 3rem;}
+    .overlay-panel{
+      background:rgba(15,23,42,0.88);
+      border-radius:20px;
+      border:1px solid rgba(15,23,42,.95);
+      box-shadow:0 25px 45px rgba(0,0,0,.85);
+      padding:1.7rem 1.7рем 2rem;
+      backdrop-filter:blur(12px);
+    }
+    .back-link{display:inline-flex;align-items:center;font-size:.85rem;color:#cbd5f5;margin-bottom:1rem;}
+    .back-link span{margin-left:.35rem;}
+    .grid{
+      display:grid;
+      grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+      gap:2rem;
+      align-items:flex-start;
+    }
+    h1{font-size:1.8rem;margin-bottom:.4rem;color:var(--text);}
+    .lead{color:var(--muted);font-size:.95rem;margin-bottom:1rem;}
+    ul.features{list-style:none;padding-left:0;color:var(--muted);font-size:.88rem;margin-bottom:1rem;}
+    ul.features li{margin-bottom:.25rem;}
+    .price{color:#fbbf24;font-weight:600;margin-bottom:.8rem;font-size:.95rem;}
+    label{
+      font-size:.82rem;color:var(--muted);
+      display:block;margin-bottom:.12rem;
+    }
+    input{
+      width:100%;
+      border-radius:10px;
+      border:1px solid rgba(148,163,184,.45);
+      background:rgba(15,23,42,.95);
+      padding:.55rem .65rem;
+      color:var(--text);
+      font:inherit;
+      outline:none;
+    }
+    input:focus{
+      border-color:#60a5fa;
+      box-shadow:0 0 0 1px rgba(96,165,250,.5);
+    }
+    .btn-primary{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:.65rem 1.4rem;border-radius:999px;border:none;
+      background:linear-gradient(135deg,#2563eb,#38bdf8);
+      color:#fff;font-size:.9rem;font-weight:600;cursor:pointer;
+    }
+    .note-small{color:#9ca3af;font-size:.82rem;margin-top:.6rem;}
+    footer{
+      padding:1.6rem 0 2.2rem;
+      font-size:.78rem;
+      color:#9ca3af;
+      text-align:center;
+    }
+    @media(max-width:800px){
+      .grid{grid-template-columns:minmax(0,1fr);}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="nav">
+      <a href="index.html" class="logo">DahuaCam Advanced Security</a>
+      <nav>
+        <ul>
+          <li><a href="index.html#services">Услуги</a></li>
+          <li><a href="cameras.html">Камери</a></li>
+          <li><a href="index.html#contact">Контакти</a></li>
+        </ul>
+      </nav>
+      <a href="checkout.html" class="cart-link">
+        Количка <span class="cart-badge" data-cart-count>0</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="overlay-panel">
+      <a href="cameras.html" class="back-link">⬅ <span>Обратно към всички камери</span></a>
+
+      <div class="grid">
+        <!-- Лява част – голям текст и характеристики -->
+        <div>
+          <h1>Камера 1 – Dahua TiOC 3-in-1</h1>
+          <p class="lead">
+            Комбинирана камера с бяло и IR осветление, звук и интелигентни функции за активно възпиране.
+            Подходяща за дворове, входове, паркинги и зони, където искаш не само да записваш, но и да
+            предупреждаваш нарушители.
+          </p>
+          <ul class="features">
+            <li>Модел: <strong>(тук можеш да въведеш точния модел – напр. TIOC ...)</strong></li>
+            <li>Комбинирано бяло осветление + IR за нощно наблюдение.</li>
+            <li>Сирена и светлинен сигнал при засечено движение или събитие.</li>
+            <li>Интелигентно разпознаване на хора/превозни средства (в зависимост от модела).</li>
+          </ul>
+          <p class="price">Цена: по запитване (зависи от конфигурацията).</p>
+        </div>
+
+        <!-- Дясна част – избор на бройки -->
+        <div>
+          <h2 style="font-size:1.1rem;margin-bottom:.6rem;">Поръчка на Камера 1 – Dahua TiOC 3-in-1</h2>
+
+          <div style="margin-bottom:.8rem;">
+            <label for="qty">Брой бройки</label>
+            <input type="number" id="qty" min="1" value="1">
+          </div>
+
+          <button class="btn-primary" id="addToCartBtn">Добави в количката</button>
+
+          <p class="note-small">
+            След като добавиш всички продукти, отвори страницата
+            <a href="checkout.html" style="text-decoration:underline;">„Количка“</a>,
+            за да попълниш данните за доставка (Еконт / Спиди, две имена, телефон и адрес).
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">© <span id="year"></span> DahuaCam Advanced Security</div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+<!-- Общ скрипт за количката -->
+<script>
+const CART_KEY = 'dahuacamCart';
+
+function getCart() {
+  try {
+    const raw = localStorage.getItem(CART_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function saveCart(cart) {
+  localStorage.setItem(CART_KEY, JSON.stringify(cart));
+  updateCartBadge();
+}
+
+function addToCart(product) {
+  const cart = getCart();
+  const existing = cart.find(item => item.id === product.id);
+  if (existing) {
+    existing.qty += product.qty;
+  } else {
+    cart.push(product);
+  }
+  saveCart(cart);
+  alert('Продуктът е добавен в количката.');
+}
+
+function cartCount() {
+  return getCart().reduce((sum, item) => sum + (item.qty || 0), 0);
+}
+
+function updateCartBadge() {
+  const el = document.querySelector('[data-cart-count]');
+  if (!el) return;
+  el.textContent = cartCount();
+}
+
+document.addEventListener('DOMContentLoaded', updateCartBadge);
+</script>
+
+<!-- Специален JS за тази камера -->
+<script>
+document.getElementById('addToCartBtn').addEventListener('click', function () {
+  var qty = parseInt(document.getElementById('qty').value, 10);
+  if (!qty || qty < 1) qty = 1;
+
+  addToCart({
+    id: 'camera1',
+    name: 'Камера 1 – Dahua TiOC 3-in-1',
+    price: null,                // ако сложиш конкретна цена, напр. 260, тогава не е null
+    currency: 'EUR',
+    note: 'Цена по запитване за Камера 1.',
+    qty: qty
+  });
+});
+</script>
+</body>
+</html>
