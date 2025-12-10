@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Количка – DahuaCam Advanced Security</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-overlay: rgba(15,23,42,0.9);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --accent: #2563eb;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{
+      margin:0;
+      font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+      background:url('background.jpg') no-repeat center center fixed;
+      background-size:cover;
+    }
+    a{color:inherit;text-decoration:none;}
+    img{max-width:100%;display:block;}
+    header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(14px);
+      background:rgba(2,6,23,.94);
+      border-bottom:1px solid rgba(148,163,184,.2);
+    }
+    .container{max-width:1150px;margin:0 auto;padding:0 1.5rem;}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:.85rem 0;}
+    .logo{color:#e5e7eb;font-weight:700;font-size:.98rem;}
+    nav ul{list-style:none;display:flex;gap:1.5rem;font-size:.9rem;}
+    nav a{color:#9ca3af;position:relative;}
+    nav a::after{
+      content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;
+      background:linear-gradient(90deg,#2563eb,#38bdf8);transition:width .18s ease;
+    }
+    nav a:hover::after{width:100%;}
+    .cart-link{font-size:.9rem;color:#e5e7eb;}
+    .cart-badge{
+      display:inline-flex;align-items:center;justify-content:center;
+      min-width:18px;height:18px;border-radius:999px;background:#f97316;
+      font-size:.75rem;margin-left:.2rem;padding:0 4px;
+    }
+    main{padding:2.4rem 0 3rem;}
+    .panel{
+      background:var(--bg-overlay);
+      border-radius:18px;
+      border:1px solid rgba(15,23,42,.9);
+      box-shadow:0 20px 40px rgba(15,23,42,.75);
+      padding:1.7rem 1.7rem 2rem;
+    }
+    h1{font-size:1.9rem;margin-bottom:.5rem;color:var(--text);}
+    h2{font-size:1.15rem;margin-bottom:.6rem;color:var(--text);}
+    p{color:var(--muted);}
+    table{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:.4rem;}
+    th,td{padding:.4rem .3rem;}
+    th{text-align:left;color:#9ca3af;border-bottom:1px solid #1f2937;}
+    td{border-bottom:1px solid #111827;}
+    .text-right{text-align:right;}
+    .text-center{text-align:center;}
+    .btn-primary{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:.65rem 1.4rem;border-radius:999px;border:none;
+      background:linear-gradient(135deg,#2563eb,#38bdf8);
+      color:#fff;font-size:.9rem;font-weight:600;cursor:pointer;
+    }
+    .btn-secondary{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:.55rem 1.3rem;border-radius:999px;
+      border:1px solid rgba(148,163,184,.6);
+      background:transparent;color:#e5e7eb;font-size:.85rem;
+      cursor:pointer;
+    }
+    label{
+      font-size:.82rem;color:var(--muted);
+      display:block;margin-bottom:.12rem;
+    }
+    input,textarea,select{
+      width:100%;
+      border-radius:10px;
+      border:1px solid rgba(148,163,184,.45);
+      background:rgba(15,23,42,.95);
+      padding:.55rem .65rem;
+      color:var(--text);
+      font:inherit;
+      outline:none;
+    }
+    input:focus,textarea:focus,select:focus{
+      border-color:#60a5fa;
+      box-shadow:0 0 0 1px rgba(96,165,250,.5);
+    }
+    textarea{resize:vertical;min-height:80px;}
+    .grid-2{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:.8rem;
+    }
+    footer{
+      padding:1.6rem 0 2.2rem;
+      font-size:.78rem;
+      color:#9ca3af;
+      text-align:center;
+    }
+    @media(max-width:700px){
+      .panel{padding:1.3rem 1.1rem 1.6rem;}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="nav">
+      <a href="index.html" class="logo">DahuaCam Advanced Security</a>
+      <nav>
+        <ul>
+          <li><a href="index.html#services">Услуги</a></li>
+          <li><a href="cameras.html">Камери</a></li>
+          <li><a href="index.html#contact">Контакти</a></li>
+        </ul>
+      </nav>
+      <a href="checkout.html" class="cart-link">
+        Количка <span class="cart-badge" data-cart-count>0</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="panel">
+      <h1>Количка</h1>
+      <p style="font-size:.95rem;margin-bottom:1.2rem;">
+        Прегледай продуктите, които си добавил, и попълни данни за доставка.
+        Поръчките се изпращат към нас по e-mail, след което ще се свържем за потвърждение.
+      </p>
+
+      <!-- Секция: продукти в количката -->
+      <section style="margin-bottom:1.8rem;">
+        <h2>Избрани продукти</h2>
+        <div id="cartEmpty" style="color:#9ca3af;font-size:.9rem;margin-top:.4rem;">
+          В момента количката е празна.
+        </div>
+
+        <table id="cartTable" style="display:none;">
+          <thead>
+            <tr>
+              <th>Продукт</th>
+              <th class="text-center">Брой</th>
+              <th class="text-right">Цена</th>
+              <th class="text-right">Сума</th>
+              <th style="width:40px;"></th>
+            </tr>
+          </thead>
+          <tbody id="cartBody"></tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3" class="text-right" style="color:#9ca3af;">Общо (само за продукти с фиксирана цена):</td>
+              <td id="cartTotal" class="text-right" style="font-weight:600;"></td>
+              <td></td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <button class="btn-secondary" id="clearCartBtn" style="margin-top:.7rem;display:none;">
+          Изчисти количката
+        </button>
+      </section>
+
+      <!-- Секция: данни за доставка -->
+      <section>
+        <h2>Данни за доставка</h2>
+        <form id="orderForm" style="margin-top:.6rem;">
+          <div class="grid-2" style="margin-bottom:.8rem;">
+            <div>
+              <label for="fullName">Две имена *</label>
+              <input id="fullName" required>
+            </div>
+            <div>
+              <label for="phone">Телефон за връзка *</label>
+              <input id="phone" required>
+            </div>
+            <div>
+              <label for="email">E-mail (по желание)</label>
+              <input id="email" type="email">
+            </div>
+          </div>
+
+          <div class="grid-2" style="margin-bottom:.8rem;">
+            <div>
+              <label for="courier">Куриер *</label>
+              <select id="courier" required>
+                <option value="">Избери...</option>
+                <option value="Еконт">Еконт</option>
+                <option value="Спиди">Спиди</option>
+              </select>
+            </div>
+            <div>
+              <label for="city">Град / населено място *</label>
+              <input id="city" required>
+            </div>
+          </div>
+
+          <div style="margin-bottom:.8rem;">
+            <label for="address">Адрес или офис на куриер *</label>
+            <input id="address" required placeholder="Адрес или офис на Еконт/Спиди">
+          </div>
+
+          <div style="margin-bottom:.8rem;">
+            <label for="note">Бележка към поръчката</label>
+            <textarea id="note" placeholder="Допълнителна информация – предпочитано време, фактура и др."></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary">Изпрати поръчката</button>
+          <p id="formMsg" style="font-size:.8rem;color:#9ca3af;margin-top:.5rem;"></p>
+        </form>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">© <span id="year"></span> DahuaCam Advanced Security</div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+<!-- Общ скрипт за количката (същият трябва да е и по продуктните страници) -->
+<script>
+const CART_KEY = 'dahuacamCart';
+
+function getCart() {
+  try {
+    const raw = localStorage.getItem(CART_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function saveCart(cart) {
+  localStorage.setItem(CART_KEY, JSON.stringify(cart));
+  updateCartBadge();
+}
+
+function cartCount() {
+  return getCart().reduce((sum, item) => sum + (item.qty || 0), 0);
+}
+
+function updateCartBadge() {
+  const el = document.querySelector('[data-cart-count]');
+  if (!el) return;
+  el.textContent = cartCount();
+}
+
+document.addEventListener('DOMContentLoaded', updateCartBadge);
+</script>
+
+<!-- Специален скрипт за рендер на количката и изпращане на поръчката -->
+<script>
+function renderCart() {
+  const cart = getCart();
+  const emptyEl = document.getElementById('cartEmpty');
+  const table = document.getElementById('cartTable');
+  const body = document.getElementById('cartBody');
+  const totalEl = document.getElementById('cartTotal');
+  const clearBtn = document.getElementById('clearCartBtn');
+
+  if (!cart.length) {
+    emptyEl.style.display = 'block';
+    table.style.display = 'none';
+    clearBtn.style.display = 'none';
+    totalEl.textContent = '';
+    return;
+  }
+
+  emptyEl.style.display = 'none';
+  table.style.display = 'table';
+  clearBtn.style.display = 'inline-flex';
+
+  body.innerHTML = '';
+  let total = 0;
+  cart.forEach((item, index) => {
+    const tr = document.createElement('tr');
+
+    const priceText = item.price ? (item.price + ' ' + (item.currency || '')) : 'по запитване';
+    let sumText = 'по запитване';
+    if (item.price) {
+      const sum = item.price * item.qty;
+      sumText = sum.toFixed(2) + ' ' + (item.currency || '');
+      total += sum;
+    }
+
+    tr.innerHTML = `
+      <td>${item.name}</td>
+      <td class="text-center">${item.qty}</td>
+      <td class="text-right">${priceText}</td>
+      <td class="text-right">${sumText}</td>
+      <td class="text-right">
+        <button type="button" data-remove="${index}"
+          style="background:none;border:none;color:#fca5a5;cursor:pointer;font-size:.8rem;">✕</button>
+      </td>
+    `;
+    body.appendChild(tr);
+  });
+
+  totalEl.textContent = total ? (total.toFixed(2) + ' EUR (ориентировъчно)') : 'по запитване';
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  renderCart();
+  updateCartBadge();
+
+  // махане на единичен продукт
+  document.getElementById('cartBody').addEventListener('click', function (e) {
+    const idx = e.target.getAttribute('data-remove');
+    if (idx === null) return;
+    const cart = getCart();
+    cart.splice(parseInt(idx, 10), 1);
+    saveCart(cart);
+    renderCart();
+  });
+
+  // изчистване на количката
+  document.getElementById('clearCartBtn').addEventListener('click', function () {
+    if (!confirm('Сигурни ли сте, че искате да изчистите количката?')) return;
+    localStorage.removeItem(CART_KEY);
+    renderCart();
+    updateCartBadge();
+  });
+
+  // изпращане на поръчката
+  document.getElementById('orderForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const cart = getCart();
+    const msgEl = document.getElementById('formMsg');
+
+    if (!cart.length) {
+      msgEl.textContent = 'Количката е празна. Моля, добавете поне един продукт.';
+      return;
+    }
+
+    const fullName = document.getElementById('fullName').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const courier = document.getElementById('courier').value;
+    const city = document.getElementById('city').value.trim();
+    const address = document.getElementById('address').value.trim();
+    const note = document.getElementById('note').value.trim();
+
+    if (!fullName || !phone || !courier || !city || !address) {
+      msgEl.textContent = 'Моля, попълнете всички задължителни полета.';
+      return;
+    }
+
+    let body = 'Нова онлайн поръчка от сайта DahuaCam Advanced Security.%0D%0A%0D%0A';
+    body += 'Продукти:%0D%0A';
+    cart.forEach(item => {
+      const priceText = item.price ? (item.price + ' ' + (item.currency || '')) : 'цена по запитване';
+      body += '- ' + item.name + ' x' + item.qty + ' – ' + priceText + '%0D%0A';
+    });
+
+    body += '%0D%0AДанни за доставка:%0D%0A';
+    body += 'Име: ' + fullName + '%0D%0A';
+    body += 'Телефон: ' + phone + '%0D%0A';
+    if (email) body += 'E-mail: ' + email + '%0D%0A';
+    body += 'Куриер: ' + courier + '%0D%0A';
+    body += 'Град: ' + city + '%0D%0A';
+    body += 'Адрес / офис: ' + address + '%0D%0A';
+    if (note) body += 'Бележка: ' + note + '%0D%0A';
+
+    const mailto = 'mailto:lmarmarov@gmail.com'
+      + '?subject=' + encodeURIComponent('Нова поръчка от сайта DahuaCam')
+      + '&body=' + body;
+
+    msgEl.textContent = 'Отваря се пощата Ви с попълнена поръчка. След изпращане ще се свържем за потвърждение.';
+    window.location.href = mailto;
+  });
+});
+</script>
+</body>
+</html>
