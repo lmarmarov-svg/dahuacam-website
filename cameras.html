@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Камери – DahuaCam Advanced Security</title>
-    <meta name="description" content="Камери и решения за видеонаблюдение от DahuaCam Advanced Security.">
+    <meta name="description" content="Камери, цени и решения за видеонаблюдение от DahuaCam Advanced Security.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -15,6 +15,7 @@
             --muted: #9ca3af;
             --border: #1f2937;
             --accent: #2563eb;
+            --accent-soft: #1d4ed8;
         }
         * { box-sizing:border-box; margin:0; padding:0; }
         body{
@@ -23,19 +24,46 @@
             background: radial-gradient(circle at top left,#1e293b 0,#020617 45%,#000 100%);
             color:var(--text);
         }
-        .container{ max-width:1150px; margin:0 auto; padding:0 1.5rem; }
+        a{ color:inherit; text-decoration:none; }
+        img{ max-width:100%; display:block; }
+
         header{
             position:sticky; top:0; z-index:50;
             backdrop-filter:blur(14px);
             background:rgba(2,6,23,.9);
             border-bottom:1px solid rgba(148,163,184,.1);
         }
+        .container{ max-width:1150px; margin:0 auto; padding:0 1.5rem; }
         .nav{ display:flex; justify-content:space-between; align-items:center; padding:.9rem 0; }
+        .logo{
+            color:#e5e7eb;
+            font-weight:700;
+            font-size:.98rem;
+        }
         nav ul{ list-style:none; display:flex; gap:1.5rem; }
-        nav a{ color:#9ca3af; font-size:.9rem; text-decoration:none; }
+        nav a{ color:#9ca3af; font-size:.9rem; position:relative; }
+        nav a::after{
+            content:""; position:absolute; left:0; bottom:-4px;
+            width:0; height:2px;
+            background:linear-gradient(90deg,#2563eb,#38bdf8);
+            transition:width .18s ease;
+        }
+        nav a:hover::after{ width:100%; }
+
         main{ padding:2.5rem 0 3rem; }
         h1{ font-size:1.8rem; margin-bottom:.4rem; }
-        .intro{ color:var(--muted); max-width:40rem; font-size:.95rem; margin-bottom:1.8rem; }
+        .intro{ color:var(--muted); max-width:40rem; font-size:.95rem; margin-bottom:0.8rem; }
+        .payment-note{
+            font-size:.85rem;
+            color:var(--muted);
+            background:rgba(15,23,42,.9);
+            border-radius:10px;
+            border:1px solid rgba(148,163,184,.3);
+            padding:.65rem .75rem;
+            margin-bottom:1.7rem;
+        }
+        .payment-note strong{ color:#e5e7eb; }
+
         .grid{
             display:grid;
             grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -59,6 +87,16 @@
         .card ul li::before{
             content:"•"; position:absolute; left:0; color:#60a5fa;
         }
+        .price{
+            margin-top:.45rem;
+            font-size:.9rem;
+            font-weight:600;
+            color:#fbbf24;
+        }
+        .price span{
+            color:#e5e7eb;
+            font-weight:700;
+        }
         footer{
             border-top:1px solid rgba(148,163,184,.15);
             padding:1.6rem 0 2.2rem;
@@ -66,13 +104,17 @@
             color:var(--muted);
             text-align:center;
         }
+
+        @media(max-width:900px){
+            nav ul{ gap:1rem; }
+        }
     </style>
 </head>
 <body>
 <header>
     <div class="container">
         <div class="nav">
-            <a href="index.html" style="color:white; font-weight:700; text-decoration:none;">DahuaCam Advanced Security</a>
+            <a href="index.html" class="logo">DahuaCam Advanced Security</a>
             <nav>
                 <ul>
                     <li><a href="index.html#services">Услуги</a></li>
@@ -87,7 +129,14 @@
 <main>
     <div class="container">
         <h1>Камери</h1>
-        <p class="intro">Част от камерите, които използваме в системите за видеонаблюдение.</p>
+        <p class="intro">
+            Част от камерите, които използваме в системите за видеонаблюдение. Цените са ориентировъчни и
+            зависят от конфигурацията и конкретния проект.
+        </p>
+        <div class="payment-note">
+            <strong>Методи за плащане:</strong> в брой при монтаж или по банков път по предварителна оферта.
+            При по-големи обекти и системи предлагаме поетапно плащане според договорената оферта.
+        </div>
 
         <div class="grid">
 
@@ -100,6 +149,7 @@
                     <li>Интелигентно осветление и сигнализация</li>
                     <li>Подходяща за външен периметър</li>
                 </ul>
+                <p class="price">Цена от <span>~260 лв</span> с ДДС (без включен монтаж).</p>
             </div>
 
             <div class="card">
@@ -111,6 +161,7 @@
                     <li>AI-ISP, Perimeter Protection</li>
                     <li>IP67 защита</li>
                 </ul>
+                <p class="price">Цена от <span>~240 лв</span> с ДДС (без включен монтаж).</p>
             </div>
 
             <div class="card">
@@ -122,6 +173,7 @@
                     <li>AutoTracking 2.0 – интелигентно следене</li>
                     <li>PTZ управление: завъртане, накланяне, оптичен зум</li>
                 </ul>
+                <p class="price">Цена от <span>~520 лв</span> с ДДС (без включен монтаж).</p>
             </div>
 
             <div class="card">
@@ -133,6 +185,7 @@
                     <li>Сирена и светлинен сигнал</li>
                     <li>Външен монтаж</li>
                 </ul>
+                <p class="price">Цена от <span>~310 лв</span> с ДДС (без включен монтаж).</p>
             </div>
 
             <div class="card">
@@ -144,6 +197,7 @@
                     <li>Нощно виждане</li>
                     <li>Поддръжка на мобилно приложение</li>
                 </ul>
+                <p class="price">Цена от <span>~190 лв</span> с ДДС (без включен монтаж).</p>
             </div>
 
         </div>
