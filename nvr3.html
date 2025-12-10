@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<title>NVR – 16/32/64 канала</title>
+<style>
+body{margin:0;font-family:'Inter';background:url('nvr3.jpg') center/cover fixed;}
+header{padding:1rem;background:rgba(0,0,0,.75);}
+.container{max-width:1150px;margin:auto;padding:1rem;}
+.panel{background:rgba(0,0,0,.75);padding:2rem;border-radius:12px;color:white;}
+button{padding:.8rem;border-radius:999px;width:100%;background:#2563eb;color:white;border:none;}
+input{width:100%;padding:.6рем;margin-bottom:1rem;border-radius:10px;background:#0f172a;color:white;border:1px solid #334155;}
+a{color:#93c5fd;}
+</style>
+</head>
+<body>
+
+<header><div class="container"><a href="index.html" style="color:white">DahuaCam</a></div></header>
+
+<main>
+<div class="container">
+<div class="panel">
+
+<a href="cameras.html">⬅ Назад</a>
+
+<h1>NVR – 16 / 32 / 64 камери</h1>
+<p>Професионални NVR системи за големи обекти – складове, паркинги, бизнес сгради.</p>
+
+<ul>
+<li>Висока производителност</li>
+<li>Съвместимост с много камери</li>
+<li>Поддръжка на големи архиви</li>
+</ul>
+
+<p>Цена: По запитване</p>
+
+<label>Брой:</label>
+<input type="number" id="qty" value="1">
+
+<button id="addToCart">Добави в количката</button>
+
+</div>
+</div>
+</main>
+
+<script>
+const CART='dahuacamCart';
+function g(){return JSON.parse(localStorage.getItem(CART)||"[]");}
+function s(c){localStorage.setItem(CART,JSON.stringify(c));}
+addToCart.onclick=()=>{let c=g();c.push({id:"nvr3",name:"NVR 16/32/64",qty:parseInt(qty.value)});s(c);alert("Добавено!")};
+</script>
+
+</body>
+</html>
