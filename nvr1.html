@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NVR – 4/8 канала</title>
+<style>
+body{
+  margin:0;font-family:'Inter';
+  background:url('nvr1.jpg') center/cover fixed;
+}
+header{padding:1rem;background:rgba(0,0,0,.75);backdrop-filter:blur(10px);}
+.container{max-width:1150px;margin:auto;padding:1rem;}
+.panel{background:rgba(0,0,0,.7);padding:2rem;border-radius:12px;color:white;}
+button{padding:.8rem;border-radius:999px;width:100%;background:#2563eb;color:white;border:none;}
+input{width:100%;padding:.6rem;margin-bottom:1rem;border-radius:10px;background:#0f172a;color:white;border:1px solid #334155;}
+a{color:#93c5fd;}
+</style>
+</head>
+<body>
+
+<header><div class="container"><a href="index.html" style="color:white">DahuaCam</a></div></header>
+
+<main>
+<div class="container">
+<div class="panel">
+
+<a href="cameras.html">⬅ Назад</a>
+
+<h1>NVR – 4/8 канала</h1>
+<p>Подходящ за малки системи – дом, офис, магазин.</p>
+
+<ul>
+  <li>Поддръжка 4 или 8 IP камери</li>
+  <li>AI анализи (по модел)</li>
+  <li>Мрежово съхранение</li>
+</ul>
+
+<p>Цена: По запитване</p>
+
+<label>Брой:</label>
+<input type="number" id="qty" value="1">
+
+<button id="addToCart">Добави в количката</button>
+
+</div>
+</div>
+</main>
+
+<script>
+const CART='dahuacamCart';
+function g(){return JSON.parse(localStorage.getItem(CART)||"[]");}
+function s(c){localStorage.setItem(CART,JSON.stringify(c));}
+addToCart.onclick=()=>{let c=g();c.push({id:"nvr1",name:"NVR 4/8 канала",qty:parseInt(qty.value)});s(c);alert("Добавено!")};
+</script>
+
+</body>
+</html>
