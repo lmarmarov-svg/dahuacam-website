@@ -4,17 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Камери – DahuaCam Advanced Security</title>
+    <meta name="description" content="Камери и решения за видеонаблюдение от DahuaCam Advanced Security.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg: #020617;
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --border: #1f2937;
+            --accent: #2563eb;
+        }
+        * { box-sizing:border-box; margin:0; padding:0; }
         body{
             margin:0;
             font-family:'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-            background:#020617;
-            color:#e5e7eb;
+            background: radial-gradient(circle at top left,#1e293b 0,#020617 45%,#000 100%);
+            color:var(--text);
         }
         a{ color:inherit; text-decoration:none; }
+        img{ max-width:100%; display:block; }
+
         header{
             position:sticky; top:0; z-index:50;
             backdrop-filter:blur(14px);
@@ -26,24 +37,25 @@
         .logo{ display:flex; align-items:center; gap:.5rem; }
         .logo-mark{
             width:32px; height:32px; border-radius:11px;
-            border:2px solid #2563eb;
+            border:2px solid var(--accent);
             display:flex; align-items:center; justify-content:center;
             font-weight:700; font-size:.9rem;
         }
         .logo-text{ display:flex; flex-direction:column; font-size:.95rem; }
         .logo-text span:first-child{ font-weight:700; letter-spacing:.03em; }
-        .logo-text span:last-child{ font-size:.75rem; color:#9ca3af; }
+        .logo-text span:last-child{ font-size:.75rem; color:var(--muted); }
         nav ul{ list-style:none; display:flex; gap:1.5rem; font-size:.9rem; }
-        nav a{ color:#9ca3af; position:relative; }
+        nav a{ color:var(--muted); position:relative; }
         nav a::after{
             content:""; position:absolute; left:0; bottom:-4px;
             width:0; height:2px; background:linear-gradient(90deg,#2563eb,#38bdf8);
             transition:width .2s ease;
         }
         nav a:hover::after{ width:100%; }
+
         main{ padding:2.5rem 0 3rem; }
         h1{ font-size:1.8rem; margin-bottom:.4rem; }
-        .intro{ color:#9ca3af; max-width:40rem; font-size:.95rem; margin-bottom:1.8rem; }
+        .intro{ color:var(--muted); max-width:40rem; font-size:.95rem; margin-bottom:1.8rem; }
         .grid{
             display:grid;
             grid-template-columns:repeat(2,minmax(0,1fr));
@@ -51,7 +63,7 @@
         }
         .card{
             border-radius:16px;
-            border:1px solid #1f2937;
+            border:1px solid var(--border);
             background:radial-gradient(circle at top left,rgba(37,99,235,.16),rgba(15,23,42,.96));
             padding:1rem;
         }
@@ -66,21 +78,22 @@
             padding:.18rem .55rem;
             border-radius:999px;
             border:1px solid rgba(148,163,184,.4);
-            color:#9ca3af;
+            color:var(--muted);
             margin-bottom:.4rem;
         }
         .card h2{ font-size:1rem; margin-bottom:.3rem; }
-        .card p{ font-size:.86rem; color:#9ca3af; margin-bottom:.4rem; }
-        .card ul{ list-style:none; font-size:.82rem; color:#9ca3af; padding-left:0; }
+        .card p{ font-size:.86rem; color:var(--muted); margin-bottom:.4rem; }
+        .card ul{ list-style:none; font-size:.82rem; color:var(--muted); padding-left:0; }
         .card ul li{ margin-bottom:.25rem; position:relative; padding-left:1rem; }
         .card ul li::before{
             content:"•"; position:absolute; left:0; color:#60a5fa;
         }
+
         footer{
             border-top:1px solid rgba(148,163,184,.15);
             padding:1.6rem 0 2.2rem;
             font-size:.78rem;
-            color:#9ca3af;
+            color:var(--muted);
         }
         .footer-row{
             display:flex; flex-wrap:wrap;
@@ -118,55 +131,64 @@
 </header>
 <main>
     <div class="container">
-        <h1>Камери, които предлагаме</h1>
+        <h1>Камери</h1>
         <p class="intro">
-            Това е примерна страница с част от моделите Dahua. Снимките по-долу са
-            от реални кутии. За най-добро качество на сайта, качи своите снимки в
-            GitHub и ги преименувай да съвпадат с имената на файловете по-долу.
+            Част от камерите, които използваме в системите за видеонаблюдение.
         </p>
         <div class="grid">
             <div class="card">
-                <span class="badge">TiOC – Three‑in‑One</span>
-                <img src="camera1.jpg" alt="Dahua TiOC мрежова камера (three-in-one)">
+                <span class="badge">Камера 1</span>
+                <img src="camera1.jpg" alt="Камера 1">
                 <h2>Dahua TiOC мрежова камера</h2>
-                <p>3‑в‑1 камера с бяло и IR осветление, предупреждаваща светлина и интелигентни функции.</p>
+                <p>Камера с комбинирано бяло и IR осветление и интелигентни функции.</p>
                 <ul>
-                    <li>Three‑in‑One Network Camera</li>
-                    <li>Интелигентно осветление и аларма</li>
-                    <li>Подходяща за периметър и дворове</li>
+                    <li>Three-in-One Network Camera</li>
+                    <li>Интелигентно осветление и сигнализация</li>
+                    <li>Подходяща за външен периметър</li>
                 </ul>
             </div>
             <div class="card">
-                <span class="badge">WizColor</span>
-                <img src="camera2.jpg" alt="Dahua WizColor dome камера">
+                <span class="badge">Камера 2</span>
+                <img src="camera2.jpg" alt="Камера 2">
                 <h2>Dahua WizColor dome камера</h2>
-                <p>Цветно изображение почти като при дневна светлина, дори при ниска осветеност.</p>
+                <p>Камера с цветно изображение при ниска осветеност и разширени AI функции.</p>
                 <ul>
-                    <li>AS BRIGHT AS DAYLIGHT</li>
-                    <li>AI‑ISP, Perimeter Protection</li>
-                    <li>SMD, IP67 защита</li>
+                    <li>WizColor технология</li>
+                    <li>AI-ISP, Perimeter Protection</li>
+                    <li>IP67 защита</li>
                 </ul>
             </div>
             <div class="card">
-                <span class="badge">Smart Dual Light</span>
-                <img src="camera3.jpg" alt="Dahua Smart Dual Light камера">
+                <span class="badge">Камера 3</span>
+                <img src="camera3.jpg" alt="Камера 3">
                 <h2>Smart Dual Light камера</h2>
-                <p>Компактна камера с интелигентно бяло и IR осветление и детекция на хора.</p>
+                <p>Компактна камера с автоматично превключване между бяло и IR осветление.</p>
                 <ul>
                     <li>Smart Dual Light</li>
-                    <li>H.265+, PoE, IP67</li>
-                    <li>Мобилно приложение</li>
+                    <li>H.265+ видео компресия</li>
+                    <li>Подходяща за дворове и входове</li>
                 </ul>
             </div>
             <div class="card">
-                <span class="badge">Active Deterrence</span>
-                <img src="camera4.jpg" alt="Dahua Active Deterrence камера">
+                <span class="badge">Камера 4</span>
+                <img src="camera4.jpg" alt="Камера 4">
                 <h2>Active Deterrence камера</h2>
                 <p>Камера с активна сигнализация – светлина и звук, плюс двупосочна аудио връзка.</p>
                 <ul>
-                    <li>Smart Dual Light &amp; сирена</li>
-                    <li>Two‑way talk</li>
-                    <li>Wi‑Fi, мобилно приложение, IP67</li>
+                    <li>Вграден микрофон и говорител</li>
+                    <li>Сирена и светлинен сигнал</li>
+                    <li>Външен монтаж</li>
+                </ul>
+            </div>
+            <div class="card">
+                <span class="badge">Камера 5</span>
+                <img src="camera5.jpg" alt="Камера 5">
+                <h2>Dahua мрежова камера</h2>
+                <p>Надеждна камера за общо видеонаблюдение в малки и средни обекти.</p>
+                <ul>
+                    <li>Full HD / 4MP резолюция</li>
+                    <li>Нощно виждане</li>
+                    <li>Поддръжка на мобилно приложение</li>
                 </ul>
             </div>
         </div>
