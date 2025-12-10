@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Камера 3 – PTZ Starlight</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{
+      margin:0;
+      font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+      background-color:#020617; /* резервен тъмен фон */
+      background-image:url('camera3.jpg'); /* ако има снимка */
+      background-repeat:no-repeat;
+      background-position:center center;
+      background-attachment:fixed;
+      background-size:cover;
+    }
+    a{color:#93c5fd;text-decoration:none;}
+    header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(14px);
+      background:rgba(2,6,23,.9);
+      border-bottom:1px solid rgba(148,163,184,.3);
+    }
+    .container{max-width:1150px;margin:0 auto;padding:0 1.5rem;}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:.85rem 0;}
+    .logo{color:#e5e7eb;font-weight:700;font-size:.98rem;}
+    nav ul{list-style:none;display:flex;gap:1.5rem;font-size:.9rem;}
+    nav a{color:#9ca3af;}
+    main{padding:2.4rem 0 3rem;}
+    .panel{
+      background:rgba(15,23,42,0.9);
+      border-radius:18px;
+      border:1px solid rgba(15,23,42,.95);
+      box-shadow:0 20px 40px rgba(0,0,0,.8);
+      padding:1.7rem 1.7rem 2rem;
+    }
+    .back-link{display:inline-flex;align-items:center;font-size:.85rem;color:#cbd5f5;margin-bottom:1rem;}
+    .back-link span{margin-left:.35rem;}
+    .grid{
+      display:grid;
+      grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+      gap:2rem;
+      align-items:flex-start;
+    }
+    h1{font-size:1.8rem;margin-bottom:.4rem;color:var(--text);}
+    h2{color:var(--text);}
+    .lead{color:var(--muted);font-size:.95rem;margin-bottom:1rem;}
+    ul.features{list-style:none;padding-left:0;color:var(--muted);font-size:.88rem;margin-bottom:1rem;}
+    ul.features li{margin-bottom:.25rem;}
+    .price{color:#fbbf24;font-weight:600;margin-bottom:.8rem;font-size:.95rem;}
+    label{
+      font-size:.82rem;color:var(--muted);
+      display:block;margin-bottom:.12rem;
+    }
+    input{
+      width:100%;
+      border-radius:10px;
+      border:1px solid rgba(148,163,184,.45);
+      background:rgba(15,23,42,.95);
+      padding:.55rem .65rem;
+      color:var(--text);
+      font:inherit;
+      outline:none;
+      margin-bottom:.7rem;
+    }
+    input:focus{
+      border-color:#60a5fa;
+      box-shadow:0 0 0 1px rgba(96,165,250,.5);
+    }
+    .btn-primary{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:.65rem 1.4rem;border-radius:999px;border:none;
+      background:linear-gradient(135deg,#2563eb,#38bdf8);
+      color:#fff;font-size:.9rem;font-weight:600;cursor:pointer;width:100%;
+    }
+    .note-small{color:#9ca3af;font-size:.82rem;margin-top:.6rem;}
+    footer{
+      padding:1.6rem 0 2.2rem;
+      font-size:.78rem;
+      color:#9ca3af;
+      text-align:center;
+    }
+    @media(max-width:800px){
+      .grid{grid-template-columns:minmax(0,1fr);}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="nav">
+      <a href="index.html" class="logo">DahuaCam Advanced Security</a>
+      <nav>
+        <ul>
+          <li><a href="index.html#services">Услуги</a></li>
+          <li><a href="cameras.html">Камери</a></li>
+          <li><a href="index.html#contact">Контакти</a></li>
+        </ul>
+      </nav>
+      <a href="checkout.html" style="color:#e5e7eb;font-size:.9rem;">
+        Количка
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="panel">
+      <a href="cameras.html" class="back-link">⬅ <span>Обратно към всички камери</span></a>
+
+      <div class="grid">
+        <!-- Лява част – описание -->
+        <div>
+          <h1>Камера 3 – PTZ Starlight</h1>
+          <p class="lead">
+            Професионална PTZ Starlight камера с AutoTracking 2.0 – идеална за големи площи, паркинги
+            и периметрова охрана, където е важно да следиш и доближаваш картината без загуба на качество.
+          </p>
+
+          <ul class="features">
+            <li>Модел: <strong>(тук можеш да въведеш точния модел – напр. SD6AL445XA-HNR)</strong></li>
+            <li>Starlight – много добра картина при ниска осветеност.</li>
+            <li>AutoTracking 2.0 – автоматично следене на хора и автомобили.</li>
+            <li>PTZ управление: завъртане, наклон и мощен оптичен zoom (доближаване без загуба на качество).</li>
+          </ul>
+
+          <p class="price">Цена: 1250 € с ДДС (без монтаж).</p>
+        </div>
+
+        <!-- Дясна част – избор на бройки -->
+        <div>
+          <h2 style="font-size:1.1rem;margin-bottom:.6rem;">Поръчка на PTZ Starlight</h2>
+
+          <label for="qty">Брой бройки</label>
+          <input type="number" id="qty" min="1" value="1">
+
+          <button class="btn-primary" id="addToCartBtn">Добави в количката</button>
+
+          <p class="note-small">
+            След като добавиш всички продукти, отвори страницата
+            <a href="checkout.html">„Количка“</a>,
+            за да попълниш данните за доставка (Еконт / Спиди, две имена, телефон и адрес).
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">© <span id="year"></span> DahuaCam Advanced Security</div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// минимална версия на количката – няма как да счупи дизайна
+const CART_KEY = 'dahuacamCart';
+
+function getCart() {
+  try {
+    const raw = localStorage.getItem(CART_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function saveCart(cart) {
+  localStorage.setItem(CART_KEY, JSON.stringify(cart));
+}
+
+document.getElementById('addToCartBtn').addEventListener('click', function () {
+  var qtyInput = document.getElementById('qty');
+  var qty = parseInt(qtyInput.value, 10);
+  if (!qty || qty < 1) qty = 1;
+
+  var cart = getCart();
+  cart.push({
+    id: 'camera3',
+    name: 'Камера 3 – PTZ Starlight',
+    price: 1250,
+    currency: 'EUR',
+    note: '1250 EUR с ДДС, без монтаж. PTZ с мощен оптичен zoom (доближаване без загуба на качество).',
+    qty: qty
+  });
+  saveCart(cart);
+  alert('Продуктът е добавен в количката.');
+});
+</script>
+
+</body>
+</html>
