@@ -20,11 +20,39 @@ header{
   backdrop-filter:blur(10px);
 }
 h1{color:white;margin-bottom:1rem;}
-p,li{color:#e5e7eb;}
+p,li{color:#e5e7eb;font-size:1rem;}
 .price{color:#facc15;font-weight:bold;margin:1rem 0;}
-input{width:100%;padding:.7rem;margin-bottom:1rem;border-radius:10px;border:1px solid #334155;background:#0f172a;color:white;}
-button{width:100%;padding:1rem;border:none;border-radius:999px;background:linear-gradient(135deg,#2563eb,#38bdf8);color:white;font-size:1rem;}
-a{color:#93c5fd;}
+input{
+  width:100%;padding:.7rem;margin-bottom:1rem;
+  border-radius:10px;border:1px solid #334155;
+  background:#0f172a;color:white;
+}
+button{
+  width:100%;padding:1rem;border:none;border-radius:999px;
+  background:linear-gradient(135deg,#2563eb,#38bdf8);
+  color:white;font-size:1rem;cursor:pointer;
+  margin-bottom: 1.5rem;
+}
+a{color:#93c5fd;font-size:0.9rem;}
+.sample-block{
+  margin-top:25px;
+  background:rgba(0,0,0,0.55);
+  padding:1.5rem;
+  border-radius:14px;
+  backdrop-filter:blur(12px);
+  text-align:center;
+}
+.sample-block h2{
+  color:white;margin:0 0 8px 0;
+}
+.sample-block p{
+  color:#e5e7eb;margin-top:0;margin-bottom:15px;
+}
+.sample-photo{
+  width:100%;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.2);
+}
 </style>
 </head>
 <body>
@@ -62,6 +90,14 @@ a{color:#93c5fd;}
 
       <button id="addToCart">Добави в количката</button>
 
+      <!-- ⭐⭐⭐ ДОБАВЕНА СЕКЦИЯ С ПРИМЕРНА СНИМКА ⭐⭐⭐ -->
+      <div class="sample-block">
+        <h2>Примерна снимка (AI камера)</h2>
+        <p>Реален пример – копие от sample photo 4.</p>
+
+        <img src="sample_cam4_day.jpg" alt="Примерна снимка" class="sample-photo">
+      </div>
+
     </div>
   </div>
 </main>
@@ -72,7 +108,12 @@ function g(){return JSON.parse(localStorage.getItem(CART_KEY)||"[]");}
 function s(c){localStorage.setItem(CART_KEY,JSON.stringify(c));}
 addToCart.onclick=()=>{
   const cart=g();
-  cart.push({id:"camera6",name:"Face Recognition AI",qty:parseInt(qty.value),price:null});
+  cart.push({
+    id:"camera6",
+    name:"Face Recognition AI",
+    qty:parseInt(qty.value),
+    price:null
+  });
   s(cart);
   alert("Добавено!");
 };
