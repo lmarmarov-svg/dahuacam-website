@@ -31,16 +31,16 @@
       border-bottom:1px solid rgba(148,163,184,.2);
     }
     .container{max-width:1150px;margin:0 auto;padding:0 1.5rem;}
-    .nav{display:flex;justify-content:space-between;align-items:center;padding:.85rem 0;}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:.85rem 0;gap:1rem;}
     .logo{color:#e5e7eb;font-weight:700;font-size:.98rem;}
-    nav ul{list-style:none;display:flex;gap:1.5rem;font-size:.9rem;}
+    nav ul{list-style:none;display:flex;gap:1.5rem;font-size:.9rem;flex-wrap:wrap;}
     nav a{color:#9ca3af;position:relative;}
     nav a::after{
       content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;
       background:linear-gradient(90deg,#2563eb,#38bdf8);transition:width .18s ease;
     }
     nav a:hover::after{width:100%;}
-    .cart-link{font-size:.9rem;color:#e5e7eb;}
+    .cart-link{font-size:.9rem;color:#e5e7eb;white-space:nowrap;}
     .cart-badge{
       display:inline-flex;align-items:center;justify-content:center;
       min-width:18px;height:18px;border-radius:999px;background:#f97316;
@@ -79,6 +79,7 @@
       padding:.55rem .45rem;
       border-bottom:1px solid #1f2937;
       color:var(--text);
+      vertical-align:middle;
     }
     tr:hover{
       background:rgba(148,163,184,0.06);
@@ -99,43 +100,19 @@
       color:#f87171;
       font-size:1rem;
       cursor:pointer;
+      padding:.2rem .35rem;
+      border-radius:8px;
     }
     .remove-btn:hover{
       color:#ef4444;
+      background:rgba(239,68,68,0.08);
     }
 
-    .btn-primary{
-      display:inline-flex;align-items:center;justify-content:center;
-      padding:.65rem 1.4rem;border-radius:999px;border:none;
-      background:linear-gradient(135deg,#2563eb,#38bdf8);
-      color:#fff;font-size:.9rem;font-weight:600;cursor:pointer;
-    }
-    .btn-secondary{
-      display:inline-flex;align-items:center;justify-content:center;
-      padding:.55rem 1.3rem;border-radius:999px;
-      border:1px solid rgba(148,163,184,.6);
-      background:transparent;color:#e5e7eb;font-size:.85rem;
-      cursor:pointer;
-    }
-
-    label{
-      font-size:.82rem;color:var(--muted);
-      display:block;margin-bottom:.12rem;
-    }
-    input,textarea,select{
-      width:100%;
-      border-radius:10px;
-      border:1px solid rgba(148,163,184,.45);
-      background:rgba(15,23,42,.95);
-      padding:.55rem .65rem;
-      color:var(--text);
-      font:inherit;
-    }
-
-    .grid-2{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:.8rem;
+    .empty-note{
+      margin-top:.8rem;
+      color:var(--muted);
+      font-style:italic;
+      display:none;
     }
 
     footer{
@@ -147,6 +124,8 @@
 
     @media(max-width:700px){
       .panel{padding:1.3rem 1.1rem 1.6rem;}
+      nav ul{gap:1rem;}
+      th:nth-child(3), td:nth-child(3) { display:none; } /* скрива "Цена" на много малък екран */
     }
   </style>
 </head>
@@ -192,12 +171,13 @@
           <tfoot>
             <tr>
               <td colspan="3" class="text-right">Общо (само за продукти с фиксирана цена):</td>
-              <td id="cartTotal" class="text-right"></td>
+              <td id="cartTotal" class="text-right">0.00 EUR</td>
               <td></td>
             </tr>
           </tfoot>
         </table>
 
+        <p id="emptyNote" class="empty-note">Количката е празна.</p>
       </section>
     </div>
   </div>
@@ -208,7 +188,111 @@
 </footer>
 
 <script>
-document.getElementById('year').textContent = new Date().getFullYear();
+  // Година
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Количка (GitHub / localStorage)
+  const CART_KEY = 'dahuacamCart';
+
+  function readCart() {
+    try {
+      const raw = localStorage.getItem(CART_KEY);
+      const data = raw ? JSON.parse(raw) : [];
+      return Array.isArray(data) ? data : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function writeCart(cart) {
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+  }
+
+  function formatEUR(value) {
+    return Number(value).toFixed(2) + ' EUR';
+  }
+
+  function getCartCount(cart) {
+    return cart.reduce((sum, item) => sum + (Number(item.qty) || 0), 0);
+  }
+
+  function updateBadge(cart) {
+    const el = document.querySelector('[data-cart-count]');
+    if (el) el.textContent = String(getCartCount(cart));
+  }
+
+  function renderCart() {
+    const cart = readCart();
+    updateBadge(cart);
+
+    const tbody = document.getElementById('cartBody');
+    const totalEl = document.getElementById('cartTotal');
+    const emptyNote = document.getElementById('emptyNote');
+
+    tbody.innerHTML = '';
+
+    if (!cart.length) {
+      emptyNote.style.display = 'block';
+      totalEl.textContent = formatEUR(0);
+      return;
+    }
+
+    emptyNote.style.display = 'none';
+
+    let total = 0;
+
+    cart.forEach((item, index) => {
+      const name = item.name || item.title || item.model || item.id || 'Продукт';
+      const qty = Math.max(1, Number(item.qty) || 1);
+
+      // price може да е null/undefined/"по запитване"
+      const priceNum = (typeof item.price === 'number') ? item.price : (
+        (typeof item.price === 'string' && item.price.trim() !== '' && !isNaN(Number(item.price))) ? Number(item.price) : null
+      );
+
+      const rowSum = (priceNum !== null) ? priceNum * qty : null;
+      if (rowSum !== null) total += rowSum;
+
+      const tr = document.createElement('tr');
+
+      tr.innerHTML = `
+        <td>${escapeHtml(name)}</td>
+        <td class="text-center">${qty}</td>
+        <td class="text-right">${priceNum !== null ? formatEUR(priceNum) : 'по запитване'}</td>
+        <td class="text-right">${rowSum !== null ? formatEUR(rowSum) : '—'}</td>
+        <td class="text-right">
+          <button class="remove-btn" type="button" aria-label="Премахни" data-remove="${index}">✕</button>
+        </td>
+      `;
+
+      tbody.appendChild(tr);
+    });
+
+    totalEl.textContent = formatEUR(total);
+
+    // remove handlers
+    tbody.querySelectorAll('[data-remove]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = Number(btn.getAttribute('data-remove'));
+        const current = readCart();
+        current.splice(idx, 1);
+        writeCart(current);
+        renderCart();
+      });
+    });
+  }
+
+  // защита срещу HTML инжекции от localStorage
+  function escapeHtml(str) {
+    return String(str)
+      .replaceAll('&','&amp;')
+      .replaceAll('<','&lt;')
+      .replaceAll('>','&gt;')
+      .replaceAll('"','&quot;')
+      .replaceAll("'","&#039;");
+  }
+
+  document.addEventListener('DOMContentLoaded', renderCart);
 </script>
 
 </body>
