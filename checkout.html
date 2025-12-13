@@ -461,8 +461,23 @@
       });
 
       // Изпращане по email (най-надеждно без backend)
-      const mailto = `mailto:lmarmarov@gmail.com?subject=${encodeURIComponent('Поръчка DahuaCam (Наложен платеж)')}&body=${encodeURIComponent(text)}`;
-      window.location.href = mailto;
+      
+      fetch('https://formspree.io/f/xbjvvlrq', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name,
+          phone: phone,
+          address: address,
+          courier: courier,
+          order: text
+        })
+      }).then(() => {
+        alert('Поръчката е изпратена успешно! Ще се свържем с вас за потвърждение.');
+      }).catch(() => {
+        alert('Грешка при изпращане. Моля, опитайте отново.');
+      });
+
 
       // Изчистваме количката
       try { localStorage.removeItem('dahuacamCart'); } catch(e) {}
