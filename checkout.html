@@ -265,27 +265,28 @@
         <p id="emptyNote" class="empty-note">Количката е празна.</p>
         <hr class="order-divider">
 
-        <h2 class="order-title">Данни за доставка</h2>
+        <form id="orderForm" action="https://formspree.io/f/xbjvvlrq" method="POST">
+<h2 class="order-title">Данни за доставка</h2>
 
         <div class="form-grid">
           <div class="field">
             <label for="fullName">Две имена</label>
-            <input id="fullName" placeholder="Име и фамилия" autocomplete="name">
+            <input id="fullName" name="fullName" placeholder="Име и фамилия" autocomplete="name">
           </div>
           <div class="field">
             <label for="phone">Телефон</label>
-            <input id="phone" placeholder="0882 939 036" autocomplete="tel">
+            <input id="phone" name="phone" placeholder="0882 939 036" autocomplete="tel">
           </div>
           <div class="field">
             <label for="courier">Куриер</label>
-            <select id="courier">
+            <select id="courier" name="courier">
               <option value="Еконт">Еконт</option>
               <option value="Спиди">Спиди</option>
             </select>
           </div>
           <div class="field">
             <label for="address">Адрес / офис на куриер</label>
-            <input id="address" placeholder="Град, улица, номер или офис на куриер" autocomplete="street-address">
+            <input id="address" name="address" placeholder="Град, улица, номер или офис на куриер" autocomplete="street-address">
           </div>
         </div>
 
@@ -303,6 +304,14 @@
         <button id="finishOrder" class="btn-primary" type="button">
           Финализирай поръчката
         </button>
+
+  <input type="hidden" name="_subject" value="Поръчка DahuaCam (Наложен платеж)">
+  <input type="hidden" name="_next" value="checkout.html?sent=1">
+  <input type="hidden" name="payment" value="Наложен платеж">
+  <textarea name="order" id="orderText" style="display:none;"></textarea>
+
+</form>
+
 
       </section>
     </div>
@@ -461,28 +470,35 @@
       });
 
       // Изпращане по email (най-надеждно без backend)
-      
-      fetch('https://formspree.io/f/xbjvvlrq', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: name,
-          phone: phone,
-          address: address,
-          courier: courier,
-          order: text
-        })
-      }).then(() => {
-        alert('Поръчката е изпратена успешно! Ще се свържем с вас за потвърждение.');
-      }).catch(() => {
-        alert('Грешка при изпращане. Моля, опитайте отново.');
-      });
+      // Изпращане към Formspree (истински POST, без mailto)
+      const form = document.getElementById('orderForm');
+      const orderField = document.getElementById('orderText');
+      if (orderField) orderField.value = text;
+
+      // заключване на бутона за да няма двойно натискане
+      btn.disabled = true;
+      btn.textContent = 'Изпращане...';
+
+      try { localStorage.removeItem('dahuacamCart'); } catch(e) {}
+      form.submit();
+});
 
 
       // Изчистваме количката
-      try { localStorage.removeItem('dahuacamCart'); } catch(e) {}
-      alert('Поръчката е подготвена. Ще се свържем с вас за потвърждение.');
-    });
+      try { localStorage.removeItem('dahuacamCart'); } catch(e) {}});
+  })();
+</script>
+
+
+<script>
+  (function(){
+    const params = new URLSearchParams(window.location.search);
+    if(params.get('sent') === '1'){
+      alert('Поръчката е изпратена успешно! Ще се свържем с вас за потвърждение.');
+      const url = new URL(window.location.href);
+      url.searchParams.delete('sent');
+      window.history.replaceState({}, '', url.toString());
+    }
   })();
 </script>
 
